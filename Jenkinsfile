@@ -1,8 +1,8 @@
 pipeline{
     agent{
       docker {
-            image 'mcr.microsoft.com/playwright:v1.47.0-jammy' 
-            args '--ipc=host' 
+            image 'mcr.microsoft.com/playwright:v1.55.0-noble'
+            args '--entrypoint=' 
         }
     }
       stages{
