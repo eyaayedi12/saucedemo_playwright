@@ -19,10 +19,10 @@ pipeline{
         }
         stage('JUnit Resultat')
         { steps{ 
-            junit 'test-results/e2e-junit-results.xml' } 
+            junit 'playwright-report/results.xml' } 
         }
 
-       
+        
       
         }
     //     post {
