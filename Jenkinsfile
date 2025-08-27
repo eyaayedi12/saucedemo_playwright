@@ -14,13 +14,13 @@ pipeline{
     
        stage('Run Playwright Tests') {
          steps {
-            sh 'npx playwright test --reporter=junit --output=test-results'
+            sh 'npx playwright test --reporter=junit --output=results.xml'
          }
       }
 
       stage('Publish JUnit Report') {
          steps {
-            junit 'test-results/results.xml'
+            junit 'playwright-report/results.xml'
          }
       }
         
