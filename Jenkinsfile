@@ -10,5 +10,14 @@ pipeline{
             }
         }
     
+        stage('run tests'){
+            steps{
+                sh 'npx playwright test'
+            }
+        }
+
+       
       
+        }
+
 }
