@@ -12,24 +12,25 @@ pipeline{
             }
         }
     
-        stage('run tests'){
-            steps{
-                sh 'npx playwright test'
-            }
-        }
-        stage('JUnit Resultat')
-        { steps{ 
-            junit 'playwright-report/results.xml' } 
-        }
+       stage('Run Playwright Tests') {
+         steps {
+            sh 'npx playwright test --reporter=junit --output=test-results'
+         }
+      }
 
+      stage('Publish JUnit Report') {
+         steps {
+            junit 'test-results/results.xml'
+         }
+      }
         
       
         }
-    //     post {
-    //     always {
+        post {
+         always {
 
-    //         archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-    //     }
-    // }
+             archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+         }
+     }
 
 }
