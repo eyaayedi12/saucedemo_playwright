@@ -17,9 +17,19 @@ pipeline{
                 sh 'npx playwright test'
             }
         }
+        stage('JUnit Resultat')
+        { steps{ 
+            junit 'test-results/e2e-junit-results.xml' } 
+        }
 
        
       
         }
+    //     post {
+    //     always {
+
+    //         archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+    //     }
+    // }
 
 }
