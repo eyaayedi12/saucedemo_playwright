@@ -25,7 +25,7 @@ pipeline {
                 stage('stash allure report'){
                     steps{
                         stash name: 'allure-results', includes: 'allure-results/*'
-                        stash name: 'junit-report', includes: 'playwright-report/*'
+                        stash name: 'junit-report', includes: 'playwright-report/results.xml'
                     }
 
                 }
