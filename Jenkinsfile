@@ -24,21 +24,31 @@ pipeline {
                 junit 'playwright-report/results.xml'
             }
         }
-
-        stage('Publish Allure Report') {
+        stage('Run Playwright Tests') {
             steps {
-                allure(
-                    includeProperties: false,
-                    jdk: '',
-                    results: [[path: 'allure-results']]
-                )
+                sh 'npx playwright test --reporter=allure-playwright'
             }
         }
+
+        // stage('Publish Allure Report') {
+        //     steps {
+        //         allure(
+        //             includeProperties: false,
+        //             jdk: '',
+        //             results: [[path: 'allure-results']]
+        //         )
+        //     }
+        // }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+            //archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+            allure([
+                includeProperties: false,
+                jdk: '',
+                results: [[path: 'allure-report']]
+            ])
         }
     }
 }
