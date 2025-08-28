@@ -24,7 +24,7 @@ pipeline {
                 junit 'playwright-report/results.xml'
             }
         }
-        stage('Run Playwright Tests') {
+        stage('Run Playwright Tests pour generer l allure ') {
             steps {
                 sh 'npx playwright test --reporter=allure-playwright'
             }
