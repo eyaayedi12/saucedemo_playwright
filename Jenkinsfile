@@ -41,7 +41,7 @@ pipeline {
             
             unstash 'allure-results'
             unstash 'junit-report'
-            junit 'playwright-report/results.xml'
+            junit 'junit-report'
             allure([
                 includeProperties: false,
                 jdk: '',
