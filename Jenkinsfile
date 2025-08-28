@@ -61,7 +61,7 @@ pipeline {
                 includeProperties: false,
                 jdk: '',
                 properties: [],
-                reportBuildPolicy: 'Always',
+                reportBuildPolicy: 'ALWAYS',
                 results: [[path: 'allure-results']]
             ])
         }
