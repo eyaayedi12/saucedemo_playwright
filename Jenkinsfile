@@ -10,7 +10,12 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh 'npm ci'
+                sh '''
+                apt-get update
+                apt-get install -y openjdk-17-jre
+                java -version
+                npm ci
+            '''
             }
         }
 
