@@ -25,7 +25,7 @@ pipeline {
                 stage('stash allure report'){
                     steps{
                         stash name: 'allure-results', includes: 'allure-results/*'
-                        stash name: 'junit-report', includes: 'playwright-report/results.xml'
+                        stash name: 'playwright-report', includes: 'playwright-report/*'
                     }
 
                 }
@@ -40,8 +40,8 @@ pipeline {
         always {
             
             unstash 'allure-results'
-            unstash 'junit-report'
-            junit 'junit-report'
+            unstash 'playwright-report'
+            junit 'playwright-report/results.xml'
             allure([
                 includeProperties: false,
                 jdk: '',
